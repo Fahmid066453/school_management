@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<div>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+</div>
+<div><a href="/test_app_1/content-add/"><button type="button">Add</button></a></div>
+<div>
+    <table border="1">
+        <tr>
+            <td>Student ID</td>
+            <td>Student Name</td>
+            <td>Class</td>
+            <td>Section</td>
+            <td>Roll</td>
+            <td>Age</td>
+            <td>Action</td>
+        </tr>
+        {% for student in student_list %}
+            <tr>
+            <td>{{ student.id }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.st_class }}</td>
+            <td>{{ student.section }}</td>
+            <td>{{ student.roll }}</td>
+            <td>{{ student.age }}</td>
+            <td>
+                <a href="/test_app_1/content-edit/{{ content.id }}/"><button type="button">Edit</button></a>
+                <a href="/test_app_1/content-delete/{{ content.id }}/"><button type="button">Delete</button></a></td>
+            </tr>
+        {% endfor %}
+
+    </table>
+    </div>
+</div>
+
+</body>
+</html>
