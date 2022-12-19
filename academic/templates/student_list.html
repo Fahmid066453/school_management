@@ -22,7 +22,7 @@
 </ul>
 {% endif %}
 </div>
-<div><a href="/test_app_1/content-add/"><button type="button">Add</button></a></div>
+<div><a href="/academic/student-data/list/"><button type="button">Add</button></a></div>
 <div>
     <table border="1">
         <tr>
@@ -43,8 +43,8 @@
             <td>{{ student.roll }}</td>
             <td>{{ student.age }}</td>
             <td>
-                <a href="/test_app_1/content-edit/{{ content.id }}/"><button type="button">Edit</button></a>
-                <a href="/test_app_1/content-delete/{{ content.id }}/"><button type="button">Delete</button></a></td>
+                <a href="/academic/student-data/edit/{{student.id}}/"><button type="button">Edit</button></a>
+                <a href="/academic/student-data/delete/{{student.id}}/"><button type="button">Delete</button></a></td>
             </tr>
         {% endfor %}
 

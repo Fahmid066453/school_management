@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+
+	<form action = "/academic/teacher-data/add/" method = "POST">
+		{% csrf_token %}
+		<label>Teachers: </label><br>
+		<label>Name : </label>
+		<input id="name" type="text" name="name"><br>
+		<label>Subject_In_Expert: </label>
+		<input id="subject_in_expert" type="text" name="expert_in_sub"><br>
+		<label>Phone Number : </label>
+		<input id="phone_number" type="text" name="phone_number"><br>
+		<label>Joining Date : </label>
+		<input id="joining_date" type="text" name="joining_date"><br>
+
+		<button type="submit" value="Submit">Submit</button>
+	</form>
+</div>
+
+</body>
+</html>

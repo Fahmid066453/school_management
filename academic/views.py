@@ -29,7 +29,7 @@
 
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
-from academic.models import Students
+from academic.models import Students,Teachers
 from django.shortcuts import render, redirect
 from django.http import (
     HttpResponseRedirect, HttpResponse)
@@ -80,22 +80,35 @@ def student_data_edit(request, student_id):
     return render(request, 'student_data_edit.html', {
         'student_data': student_data
     })
-def student_data_delet(request, student_id):
+
+def student_data_delete(request, student_id):
     student_data = Students.objects.filter(id=student_id).last()
+    student_data.delete()
+
+    messages.success(request, '<i class="fa fa-check-circle"></i> নতুন Content সফলভাবে সংযুক্ত হয়েছে !',
+                     extra_tags='alert-success crop-both-side')
+
+    return HttpResponseRedirect('/academic/student-data/list/')
+
+def teacher_data_add(request):
     if request.method == 'POST':
-        student_data.name = request.POST.get('name')
-        student_data.st_class = request.POST.get('st_class')
-        student_data.section = request.POST.get('section')
-        student_data.roll = request.POST.get('roll')
-        student_data.age = request.POST.get('age')
-        student_data.save()
+        teacher_add = Teachers()
+        teacher_add.name = request.POST.get('name')
+        teacher_add.expert_in_sub = request.POST.get('expert_in_sub')
+        teacher_add.phone_number = request.POST.get('phone_number')
+        teacher_add.joining_date = request.POST.get('joining_date')
+        teacher_add.active_status = True
+        teacher_add.save()
 
         messages.success(request, '<i class="fa fa-check-circle"></i> নতুন Content সফলভাবে সংযুক্ত হয়েছে !',
                          extra_tags='alert-success crop-both-side')
 
-        return HttpResponseRedirect('/academic/student-data/list/')
+        return HttpResponseRedirect('/academic/teacher-data/list/')
 
-    return render(request, 'student_data_delet.html', {
-        'student_data': student_data
+    return render(request, 'teacher_data_add.html', {})
+#########################
+def teacher_list(request):
+    teacher_list = Teachers.objects.all()
+    return render(request, 'teacher_data_list.html', {
+        'teacher_list': teacher_list
     })
-

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    </div>
+    <div><a href="/academic/teacher-data/add/"><button type="button">Add</button></a></div>
+    <div>
+        <table border="1">
+            <tr>
+                <td>Teacher ID</td>
+                <td>Teacher Name</td>
+                <td>Subject In Expert</td>
+                <td>Phone Number </td>
+                <td>Joining Date </td>
+                <td>Action</td>
+            </tr>
+            {% for teacher in teacher_list %}
+                <tr>
+                <td>{{ teacher.id }}</td>
+                <td>{{ teacher.name }}</td>
+                <td>{{ teacher.expert_in_sub}}</td>
+                <td>{{teacher.phone_number}}</td>
+                <td>{{ teacher.joining_date}}</td>
+                <td>
+                    <a href="/academic/student-data/edit/{{student.id}}/"><button type="button">Edit</button></a>
+                    <a href="/academic/student-data/delete/{{student.id}}/"><button type="button">Delete</button></a>
+                </td>
+                </tr>
+            {% endfor %}
+
+        </table>
+
+    </div>
+</div>
+
+
+</body>
+</html>

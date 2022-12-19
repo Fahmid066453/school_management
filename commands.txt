@@ -17,6 +17,7 @@ django-admin startproject school_management
 Run - 
 python3 manage.py runserver
 
+Makemigration - python3 manage.py makemigrations
 Migrate - python3 manage.py migrate
 Create user - python3 manage.py createsuperuser
 
