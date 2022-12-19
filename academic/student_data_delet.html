@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+<form action = "/academic/student-data/delet/{{ student_data.id }}/" method = "POST">
+	{% csrf_token %}
+	<label>Students : </label><br>
+	<label>Name : </label>
+	<input id="name" type="text" name="name" value="{{ student_data.name }}"><br>
+	<label>Class: </label>
+	<input id="st_class" type="text" name="st_class" value="{{ student_data.st_class }}"><br>
+	<label>Section : </label>
+	<input id="section" type="text" name="section" value="{{ student_data.section }}"><br>
+	<label>Roll : </label>
+	<input id="roll" type="number" name="roll" value="{{ student_data.roll }}"><br>
+	<label>Age : </label>
+	<input id="age" type="number" name="age" value="{{ student_data.age }}"><br>
+	<button type="submit" value="Submit">Submit</button>
+</form>
+</div>
+
+
+</body>
+</html>
